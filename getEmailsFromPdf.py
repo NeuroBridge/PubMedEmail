@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-
+import os
 import re
 import argparse
 import sys
 import PyPDF2 
 
 def main(args):
+
+    # Make sure the file is not empty
+    filesize = os.path.getsize(args.inputFile)
+    if filesize == 0:
+       print("emptyFile")
+       sys.exit(0)
 
     nPages = get_page_count(args.inputFile)
 #   print (nPages)
